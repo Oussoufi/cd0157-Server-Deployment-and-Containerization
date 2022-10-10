@@ -71,6 +71,8 @@ def auth():
     
     email = request_data.get('email')
     password = request_data.get('password')
+
+    print(request_data)
     
     if not email:
         LOG.error("No email provided")
@@ -80,6 +82,8 @@ def auth():
         return jsonify({"message": "Missing parameter: password"}, 400)
     body = {'email': email, 'password': password}
 
+    print(body)
+    
     user_data = body
 
     return jsonify(token=_get_jwt(user_data).decode('utf-8'))
